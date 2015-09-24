@@ -1,0 +1,93 @@
+/*
+* Sass compile command: sass --scss -t compressed style.scss style.css
+*/
+html, body, section, nav, article, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, div, a, em, strong, small, s, cite, q, dfn, abbr, time, code, var, samp, kbd, sub, sup, i, b, mark, span, br, ins, del, img, iframe, embed, object, video, audio, canvas, map, area, table, caption, colgroup, tbody, thead, tfoot, tr, td, th, form, fieldset, legend, label, input, button, select, textarea, details, summary, command, menu {
+  font-size: 100%;
+  text-decoration: none;
+  vertical-align: baseline;
+  background: transparent;
+  margin: 0;
+  border: 0 none;
+  padding: 0; }
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.header {
+  height: 40px;
+  margin: 5px;
+  background: silver; }
+
+/**********************************************
+* BEGIN: section to move into your site's CSS
+**********************************************/
+/* Apply this class to anything outside of your scroller */
+html, body, .outside-scroller {
+  height: 100%;
+  overflow: hidden; }
+
+/* Apply this class to the part you want to scroll */
+.scroller {
+  position: absolute;
+  left: 0;
+  top: 55px;
+  bottom: 0;
+  width: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  /* If you're using Modernizr, this will help out with some touch devices */ }
+.touch .scroller {
+  overflow-y: scroll;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0); }
+.touch .scroller > * {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative; }
+.scroller:focus {
+  outline: none; }
+
+/**********************************************
+* END: section to move into your site's CSS
+**********************************************/
+.column {
+  padding: 0 5px; }
+@media (min-width: 200px) {
+  .column {
+    float: left;
+    width: 50%; } }
+@media (min-width: 400px) {
+  .column {
+    width: 33.33%; } }
+@media (min-width: 600px) {
+  .column {
+    width: 25%; } }
+@media (min-width: 800px) {
+  .column {
+    width: 20%; } }
+
+.widget {
+  height: 300px;
+  margin: 0 auto 10px;
+  clear: both; }
+.column:nth-child(1) .widget {
+  background: Tan; }
+.column:nth-child(2) .widget {
+  background: PaleTurquoise; }
+.column:nth-child(3) .widget {
+  background: Moccasin; }
+.column:nth-child(4) .widget {
+  background: IndianRed; }
+.column:nth-child(5) .widget {
+  background: SkyBlue; }
+
+/*# sourceMappingURL=style.css.map */

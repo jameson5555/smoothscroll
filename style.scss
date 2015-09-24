@@ -1,0 +1,115 @@
+/*
+* Sass compile command: sass --scss -t compressed style.scss style.css
+*/
+
+// Normalization
+html, body, section, nav, article, aside, h1, h2, h3, h4, h5, h6, hgroup, header, footer, address, p, hr, pre, blockquote, ol, ul, li, dl, dt, dd, figure, figcaption, div, a, em, strong, small, s, cite, q, dfn, abbr, time, code, var, samp, kbd, sub, sup, i, b, mark, span, br, ins, del, img, iframe, embed, object, video, audio, canvas, map, area, table, caption, colgroup, tbody, thead, tfoot, tr, td, th, form, fieldset, legend, label, input, button, select, textarea, details, summary, command, menu {
+	font-size: 100%;
+	text-decoration: none;
+	vertical-align: baseline;
+	background: transparent;
+	margin: 0;
+	border: 0 none;
+	padding: 0;
+}
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.header {
+	height: 40px;
+	margin: 5px;
+	background: silver;
+}
+
+/**********************************************
+* BEGIN: section to move into your site's CSS
+**********************************************/
+
+/* Apply this class to anything outside of your scroller */
+html,
+body,
+.outside-scroller { 
+	height: 100%;
+	overflow: hidden;
+}
+
+/* Apply this class to the part you want to scroll */
+.scroller {
+	position: absolute;
+	left: 0;
+	top: 55px; // Change this value to match the height of your header, plus any extra margin
+	bottom: 0; // change this value if you want a static footer
+	width: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	/* If you're using Modernizr, this will help out with some touch devices */
+	.touch & { 
+		overflow-y: scroll;
+		-webkit-transform:translateZ(0); // Trigger hardware acceleration
+		-moz-transform:translateZ(0);
+		-ms-transform:translateZ(0);
+		-o-transform:translateZ(0);
+		transform:translateZ(0);
+		>* {
+			-webkit-transform:translateZ(0);  // This with position:relative tends to keep things scrolling together in native android
+			-moz-transform:translateZ(0);
+			-ms-transform:translateZ(0);
+			-o-transform:translateZ(0);
+			transform:translateZ(0);
+			position: relative;
+		}
+	}
+	&:focus {
+		outline: none; // In case you want to trigger focus on the scrollable area, this will keep unsightly outlines away
+	}
+}
+/**********************************************
+* END: section to move into your site's CSS
+**********************************************/
+
+
+// Columns and widgets, just to give you something to scroll
+@mixin target($target) {
+	@if $target == 1 {
+		@media (min-width: 200px) {@content;}
+	}
+	@else if $target == 2 {
+		@media (min-width: 400px) {@content;}
+	}
+	@else if $target == 3 {
+		@media (min-width: 600px) {@content;}
+	}
+	@else if $target == 4 {
+		@media (min-width: 800px) {@content;}
+	}
+}
+.column {
+	padding: 0 5px;
+	@include target(1) {
+		float: left;
+		width: 50%;
+	}
+	@include target(2) {
+		width: 33.33%;
+	}
+	@include target(3) {
+		width: 25%;
+	}
+	@include target(4) {
+		width: 20%;
+	}
+}
+.widget {
+	height: 300px;
+	margin: 0 auto 10px;
+	clear: both;
+	// Native web colors for the columns ;)
+	.column:nth-child(1) & {background: Tan;}
+	.column:nth-child(2) & {background: PaleTurquoise;}
+	.column:nth-child(3) & {background: Moccasin;}
+	.column:nth-child(4) & {background: IndianRed;}
+	.column:nth-child(5) & {background: SkyBlue;}
+}
